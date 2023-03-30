@@ -8,36 +8,32 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
-  color: #afabab;
+  color: #d4d3d3;
   line-height: 1.5;
-  background: url('../img/planet-earth-at-night.jpg') repeat;
+  background: url('../img/planet-earth-at-night.jpg') no-repeat;
 }
 
 #search-box {
   font: inherit;
   padding: 8px;
   max-width: 320px;
-  margin-bottom: 16px;
+  margin: 10px;
+  margin-left: 20px;
+}
+
+.card-title {
+  font-size: 30px;
+  font-family: fantasy;
+  color: aliceblue;
 }
 
 ul {
   list-style: none;
 }
 
-h1 {
-  font-size: 60px;
-}
-
-p {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-img {
-  margin-right: 10px;
-}
-
-li {
-  font-size: 18px;
-  font-weight: 500;
+.list-item {
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+  align-items: center;
 }
