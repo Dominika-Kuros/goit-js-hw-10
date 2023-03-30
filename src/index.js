@@ -9,19 +9,27 @@ const searchBox = document.getElementById('search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
+    
 
-searchBox.addEventListener('input', debounce(() => fetchCountries(searchBox.value.trim())
-    .then(data => {
-        renderCountry(data);
-        
-    })
-    .catch(error => {
-        Notiflix.Notify.failure("Oops, there is no country with that name");
+searchBox.addEventListener('input', debounce(() => {
+    if (!searchBox.value.trim()) {
         countryList.innerHTML = "";
         countryInfo.innerHTML = "";
-    }), DEBOUNCE_DELAY));
+        return;
+    }
 
-
+    fetchCountries(searchBox.value)
+        .then(data => {
+            renderCountry(data)
+        })
+   
+        .catch(error => {
+            Notiflix.Notify.failure("Oops, there is no country with that name");
+            countryList.innerHTML = "";
+            countryInfo.innerHTML = "";
+        }), DEBOUNCE_DELAY;
+}));
+ 
 function renderCountry(data) {
     if (data.length > 10) {
         Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
@@ -62,7 +70,7 @@ function renderCountry(data) {
         countryList.innerHTML = markupCountry;
         countryInfo.innerHTML = '';
     }
-}
+    }
         
 
 
